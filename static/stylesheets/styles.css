@@ -1,9 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+
+button{
+  /* change these properties to whatever you want */
+  height: 30px;
+  width: 100px;
+  border: none;
+  background-color: ghostwhite;
+  color: dimgray;
+  border-radius: 10px;
+}
+
+input[type=text] {
+  font-size: 90%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+nav {
+  margin: 0;
+}
+
+a {
+  margin: 0 10px;
+  font-size: 40px;
+  color: slategray;
+  text-decoration: none;
+}
+
+
 .translation {
+  margin: 0 auto;
   display: flex;
   flex: 1 1 200px;
   justify-content: center;
+  background-color: azure;
+  border: dashed;
 }
 
 .translation > * {
-  margin: 20px;
+  width: 200px;
 }
