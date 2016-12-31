@@ -6,7 +6,7 @@ translations/config.py
 *.pot
 *.py[co]
 .tox/
-__pycache__
+__pycache__/
 MANIFEST
 dist/
 docs/_build/
@@ -15,4 +15,4 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
-.idea
+.idea/
