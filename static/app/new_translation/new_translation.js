@@ -8,8 +8,9 @@ angular.module('translator.new_translation', [])
     $scope.addTranslation = function () {
       Translations.addTranslation($scope.phrase)
         .then(function(translation) {
-          $scope.translation = translation.data[0].fields.eng_translation;
-          $scope.detectedSourceLang = translation.data[0].fields.original_lang;
+          console.log(translation);
+          $scope.translation = translation.data.eng_translation;
+          $scope.detectedSourceLang = translation.data.original_lang;
         })
         .catch(function(error) {
           console.error(error);

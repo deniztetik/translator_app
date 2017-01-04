@@ -4,6 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 from django.core import serializers
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Translation
@@ -13,12 +14,15 @@ from .models import Translation
 def index(request):
     if request.method == "GET":
         data = serializers.serialize("json", Translation.objects.all())
-        return HttpResponse(data)
+        return HttpResponse(data, content_type='application/json')
     if request.method == "POST":
         # these two lines convert JSON into a Python dict
         # so we can further process the data
         body_unicode = request.body.decode('utf-8')
         body = json.loads(r'%s' % body_unicode)
+        # print(body)
+        if body["original_lang_text"] == "":
+            return JsonResponse({"error": "Empty String"}, status=422)
         ###
         # create new event, convert request body dict into model properties,
         # and then save in db
@@ -26,7 +30,10 @@ def index(request):
         translation = Translation()
         translation.dict_to_class(body)
         translation.save()
-        #TODO: create dict response so request doesn't have to filter through query set just to get the same item
-        created_translation = Translation.objects.filter(id=translation.id)
-        print(created_translation)
-        return HttpResponse(serializers.serialize("json", created_translation))
+        # Populate response dict because serializer only works on queryset
+        response = {
+            "original_lang_text": translation.original_lang_text,
+            "original_lang": translation.original_lang,
+            "eng_translation": translation.eng_translation
+        }
+        return JsonResponse(response)

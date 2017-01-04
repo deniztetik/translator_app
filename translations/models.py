@@ -14,14 +14,13 @@ class Translation(models.Model):
     eng_translation = models.CharField(max_length=500)
     original_lang = models.CharField(max_length=500, default='es')
 
-    def __str__(self):
-        return str([self.original_lang_text, self.original_lang, self.eng_translation])
+    # def __str__(self):
+    #     return str([self.original_lang_text, self.original_lang, self.eng_translation])
 
     def dict_to_class(self, req_body):
         self.pub_date = datetime.now()
         self.original_lang_text = req_body['original_lang_text']
         self.get_english_translation_and_source_language()
-        print(self.original_lang)
 
     # Sample Google Translate API Params
     # {
@@ -29,10 +28,14 @@ class Translation(models.Model):
     #   'target': 'en',
     # }
     def get_english_translation_and_source_language(self):
+        # print(
+        #     service.detections().list(
+        #         q=[self.original_lang_text]
+        #     ).execute()
+        # )
         request = service.translations().list(
             target='en',
             q=[self.original_lang_text]
         ).execute()
-        print(request)
         self.original_lang = request['translations'][0]['detectedSourceLanguage']
         self.eng_translation = request['translations'][0]['translatedText']
