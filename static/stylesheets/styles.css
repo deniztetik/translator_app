@@ -51,3 +51,7 @@ a {
 .translation > * {
   width: 200px;
 }
+
+.error {
+  color: red;
+}

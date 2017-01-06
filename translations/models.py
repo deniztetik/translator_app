@@ -14,8 +14,8 @@ class Translation(models.Model):
     eng_translation = models.CharField(max_length=500)
     original_lang = models.CharField(max_length=500, default='es')
 
-    # def __str__(self):
-    #     return str([self.original_lang_text, self.original_lang, self.eng_translation])
+    def __str__(self):
+        return str([self.original_lang_text, self.original_lang, self.eng_translation])
 
     def dict_to_class(self, req_body):
         self.pub_date = datetime.now()

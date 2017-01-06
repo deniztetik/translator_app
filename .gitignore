@@ -17,3 +17,4 @@ build/
 tests/report/
 .idea/
 .idea/workspace.xml
+translations/__pycache__/
