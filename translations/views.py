@@ -22,7 +22,9 @@ def index(request):
         body = json.loads(r'%s' % body_unicode)
         # print(body)
         if body["original_lang_text"] == "":
-            return JsonResponse({"error": "Empty String"}, status=422)
+            return JsonResponse({"error": "Text field was left empty"}, status=422)
+        if len(body["original_lang_text"]) > 500:
+            return JsonResponse({"error": "Text must be under 500 characters"}, status=422)
         ###
         # create new event, convert request body dict into model properties,
         # and then save in db

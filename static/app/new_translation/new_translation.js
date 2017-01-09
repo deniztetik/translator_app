@@ -16,10 +16,8 @@ angular.module('translator.new_translation', [])
         })
         .catch(function(response) {
           $scope.translation = '';
-          if (response.data.error === 'Empty String') {
-            $scope.errorMessage = 'Text field was left empty';
-          }
-        });
+          $scope.errorMessage = response.data.error;
+        })
       } else {
         $scope.translation = '';
         $scope.errorMessage = 'Text field was left empty';
