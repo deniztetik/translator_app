@@ -7,10 +7,10 @@ angular.module('translator.new_translation', [])
     $scope.detectedSourceLang = '';
     $scope.errorMessage = '';
     $scope.addTranslation = function () {
-      $scope.errorMessage = '';
       if ($scope.phrase) {
         Translations.addTranslation($scope.phrase)
         .then(function(translation) {
+          $scope.errorMessage = '';
           $scope.translation = translation.data.eng_translation;
           $scope.detectedSourceLang = translation.data.original_lang;
         })
@@ -21,6 +21,7 @@ angular.module('translator.new_translation', [])
           }
         });
       } else {
+        $scope.translation = '';
         $scope.errorMessage = 'Text field was left empty';
       }
     };
