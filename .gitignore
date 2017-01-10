@@ -18,3 +18,4 @@ tests/report/
 .idea/
 .idea/workspace.xml
 translations/__pycache__/
+translator_app/settings_secret.py
