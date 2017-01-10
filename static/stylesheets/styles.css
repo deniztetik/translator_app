@@ -43,7 +43,7 @@ a {
   margin: 0 auto;
   display: flex;
   flex: 1 1 200px;
-  justify-content: acenter;
+  justify-content: center;
   background-color: azure;
   border: dashed;
 }

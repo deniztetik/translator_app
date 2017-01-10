@@ -6,6 +6,7 @@ angular.module('translator.translations_list', [])
     $scope.getTranslations = function () {
       Translations.getAll()
         .then(function(translations) {
+          console.log(translations);
           $scope.translations = translations;
         })
         .catch(function(error) {

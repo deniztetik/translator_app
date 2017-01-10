@@ -1,5 +1,5 @@
 <div>
-  <div class= "translation" ng-repeat="translation in translations">
+  <div class= "translation" ng-repeat="translation in translations | orderBy:'-fields.pub_date'">
     <p>{{ translation.fields.original_lang_text }}</p>
     <p>Language: {{ translation.fields.original_lang }}</p>
     <p>{{ translation.fields.eng_translation}}</p>
