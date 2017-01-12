@@ -2,11 +2,10 @@
 angular.module('translator.translations_list', [])
 
   .controller('TranslationsListController', function ($scope, Translations) {
-    $scope.translations = {};
+    $scope.translations = [];
     $scope.getTranslations = function () {
       Translations.getAll()
         .then(function(translations) {
-          console.log(translations);
           $scope.translations = translations;
         })
         .catch(function(error) {
